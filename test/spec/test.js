@@ -41,4 +41,56 @@
             });
         });
     });
+
+    describe('View', function () {
+        describe('Exercise', function () {
+            var exerciseView = null;
+            beforeEach(function () {
+                var exerciseSession = new PushUpsW3.Models.ExerciseSessionModel();
+                exerciseView = new PushUpsW3.Views.ExerciseView({
+                    model: exerciseSession
+                });
+            });
+            it('should exist', function () {
+                expect(exerciseView).to.exist;
+            });
+            it('should display repetitions number', function () {
+                expect(exerciseView.render().$el.html()).to.match(/0/);
+            });
+            it('model change should update display with model data', function () {
+                expect(exerciseView.render().$el.html()).to.match(/0/);
+                exerciseView.model.set('repetitions', 5);
+                expect(exerciseView.$el.html()).to.match(/5/);
+            });
+            it('should have a function to increment model repetitions', function () {
+                expect(_.isFunction(exerciseView.incrementRepetitions)).to.be.true;
+            });
+            it('incrementing repetitions should update model', function () {
+                exerciseView.incrementRepetitions();
+                exerciseView.incrementRepetitions();
+                expect(exerciseView.model.get('repetitions')).to.equal(2);
+            });
+            it('clicking increment button should update display with model data', function () {
+                expect(exerciseView.render().$el.html()).to.match(/0/);
+                exerciseView.$('#repetitions').click();
+                expect(exerciseView.$el.html()).to.match(/1/);
+            });
+            it('should have a function to reset model repetitions', function () {
+                expect(_.isFunction(exerciseView.resetRepetitions)).to.be.true;
+            });
+            it('resetting repetitions should update model', function () {
+                exerciseView.model.set('repetitons', 4);
+                exerciseView.resetRepetitions();
+                expect(exerciseView.model.get('repetitions')).to.equal(0);
+            });
+            it('clicking reset button should update display with model data', function () {
+                exerciseView.incrementRepetitions();
+                exerciseView.incrementRepetitions();
+                expect(exerciseView.render().$el.html()).to.match(/2/);
+                exerciseView.$('#reset').click();
+                expect(exerciseView.$el.html()).to.match(/0/);
+            });
+        });
+    });
+
 })();
