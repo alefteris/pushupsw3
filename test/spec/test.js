@@ -1,4 +1,3 @@
-/*jshint expr: true*/
 /*global describe, it, beforeEach, expect, PushUpsW3, _*/
 'use strict';
 (function () {
