@@ -9,6 +9,8 @@ window.PushUpsW3 = {
     Routers: {},
     init: function () {
         console.log('Hello from Backbone!');
+        this.router = new PushUpsW3.Routers.AppRouter();
+        Backbone.history.start({pushState: true});
     }
 };
 

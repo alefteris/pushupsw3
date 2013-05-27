@@ -1,4 +1,4 @@
-/*global describe, it, beforeEach, expect, PushUpsW3, _*/
+/*global describe, it, beforeEach, afterEach, expect, PushUpsW3, _, Backbone, sinon*/
 'use strict';
 (function () {
     describe('Model', function () {
@@ -90,6 +90,64 @@
                 expect(exerciseView.$el.html()).to.match(/0/);
             });
         });
+
+    });
+
+    describe('AppRouter', function () {
+        beforeEach(function () {
+            this.router = new PushUpsW3.Routers.AppRouter();
+        });
+        it('should exist', function () {
+            expect(this.router).to.exist;
+        });
+
+        describe('Route', function () {
+            beforeEach(function () {
+                this.routeSpy = sinon.spy();
+                try {
+                    Backbone.history.start({silent:true, pushState:true});
+                } catch(e) {}
+                this.router.navigate('elsewhere');
+            });
+            it('index should be called with a blank hash', function () {
+                this.router.bind('route:index', this.routeSpy);
+                this.router.navigate('', true);
+                expect(this.routeSpy.calledOnce).to.be.true;
+                expect(this.routeSpy.calledWithExactly()).to.be.true;
+            });
+        });
+
+        describe('Route Handler', function () {
+            beforeEach(function () {
+                this.model = new Backbone.Model();
+                this.exerciseViewStub = sinon.stub(window.PushUpsW3.Views, 'ExerciseView')
+                                             .returns(new Backbone.View());
+                this.exerciseSessionModelStub = sinon.stub(window.PushUpsW3.Models, 'ExerciseSessionModel')
+                                                .returns(this.model);
+            });
+            afterEach(function () {
+                this.exerciseViewStub.restore();
+                this.exerciseSessionModelStub.restore();
+            });
+
+            describe('Index', function () {
+                describe('when no model exists', function () {
+                    beforeEach(function () {
+                        this.router.index();
+                    });
+                    it('creates a ExerciseSessionModel', function () {
+                        expect(this.exerciseSessionModelStub.calledOnce).to.be.true;
+                        expect(this.exerciseSessionModelStub.calledWithExactly()).to.be.true;
+                    });
+                    it('creates a ExerciseView', function () {
+                        expect(this.exerciseViewStub.calledOnce).to.be.true;
+                        expect(this.exerciseViewStub.calledWithExactly({model: this.model})).to.be.true;
+                    });
+                });
+            });
+
+        });
+
     });
 
 })();
