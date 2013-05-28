@@ -1,4 +1,4 @@
-/*global PushUpsW3, $*/
+/*global PushUpsW3, Backbone*/
 'use strict';
 
 
