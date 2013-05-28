@@ -1,6 +1,10 @@
 {
   "name": "pushupsw3",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alefteris/pushupsw3.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -26,5 +30,8 @@
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
   }
 }
