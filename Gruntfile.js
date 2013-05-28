@@ -288,6 +288,15 @@ module.exports = function (grunt) {
         'mocha'
     ]);
 
+    grunt.registerTask('lint', [
+        'jshint'
+    ]);
+
+    grunt.registerTask('lint+test', [
+        'jshint',
+        'test'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
@@ -305,8 +314,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
-        'test',
+        'lint+test',
         'build'
     ]);
 };
