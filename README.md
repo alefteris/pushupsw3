@@ -59,10 +59,11 @@ The list of browsers I have tested with are:
 
 ## Build Instructions
 
-You will need to have [Node.js](http://nodejs.org/) installed in your system.
+You will need to have [Node.js](http://nodejs.org/) and [Ruby](http://www.ruby-lang.org/) installed in your system.
 
 ``` shell
 npm install -g grunt-cli bower
+gem install compass
 git clone git://github.com/alefteris/pushupsw3.git
 cd pushupsw3
 npm install
