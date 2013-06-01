@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# Time: Sat Jun 01 2013 22:59:10 GMT+0300 (EEST)
+
+CACHE:
+index.html
+media/tick.wav
+
+NETWORK:
+http://*
+https://*

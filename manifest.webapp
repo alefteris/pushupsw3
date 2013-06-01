@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "name": "PushUpsW3",
+  "description": "A push-ups mobile web app",
+  "icons": {
+    "16": "/icon-16.png",
+    "30": "/ffos-icon-30.png",
+    "32": "/icon-32.png",
+    "48": "/icon-48.png",
+    "60": "/ffos-icon-60.png",
+    "64": "/icon-64.png",
+    "128": "/icon-128.png",
+    "256": "/icon-256.png"
+  },
+  "developer": {
+    "name": "Thanos Lefteris",
+    "url": "http://thanoslefteris.com"
+  },
+  "appcache_path": "/manifest.appcache"
+}
