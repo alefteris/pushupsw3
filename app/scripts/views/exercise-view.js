@@ -1,31 +1,34 @@
 /*global PushUpsW3, Backbone, JST*/
 
-'use strict';
+(function () {
+    'use strict';
 
-PushUpsW3.Views.ExerciseView = Backbone.View.extend({
+    PushUpsW3.Views.ExerciseView = Backbone.View.extend({
 
-    template: JST['app/scripts/templates/exercise.ejs'],
+        template: JST['app/scripts/templates/exercise.ejs'],
 
-    events: {
-        'click #repetitions': 'incrementRepetitions',
-        'click #reset': 'resetRepetitions'
-    },
+        events: {
+            'click #repetitions': 'incrementRepetitions',
+            'click #reset': 'resetRepetitions'
+        },
 
-    initialize: function () {
-        this.model.on('change:repetitions', this.render, this);
-    },
+        initialize: function () {
+            this.model.on('change:repetitions', this.render, this);
+        },
 
-    incrementRepetitions: function () {
-        this.model.increment();
-    },
+        incrementRepetitions: function () {
+            this.model.increment();
+        },
 
-    resetRepetitions: function () {
-        this.model.reset();
-    },
+        resetRepetitions: function () {
+            this.model.reset();
+        },
 
-    render: function () {
-        this.$el.html(this.template(this.model.toJSON()));
-        return this;
-    }
+        render: function () {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
 
-});
+    });
+
+})();

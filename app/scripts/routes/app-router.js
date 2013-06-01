@@ -1,16 +1,20 @@
 /*global PushUpsW3, Backbone*/
-'use strict';
 
-PushUpsW3.Routers.AppRouter = Backbone.Router.extend({
+(function () {
+    'use strict';
 
-    routes: {
-        '': 'index'
-    },
+    PushUpsW3.Routers.AppRouter = Backbone.Router.extend({
 
-    index: function () {
-        var exerciseSession = new PushUpsW3.Models.ExerciseSessionModel();
-        var exerciseView = new PushUpsW3.Views.ExerciseView({model: exerciseSession});
-        $('#container').html(exerciseView.render().el);
-    }
+        routes: {
+            '': 'index'
+        },
 
-});
+        index: function () {
+            var exerciseSession = new PushUpsW3.Models.ExerciseSessionModel();
+            var exerciseView = new PushUpsW3.Views.ExerciseView({model: exerciseSession});
+            $('#container').html(exerciseView.render().el);
+        }
+
+    });
+
+})();

@@ -1,18 +1,22 @@
 /*global PushUpsW3, Backbone*/
-'use strict';
 
-PushUpsW3.Models.ExerciseSessionModel = Backbone.Model.extend({
+(function () {
+    'use strict';
 
-    defaults: {
-        repetitions: 0
-    },
+    PushUpsW3.Models.ExerciseSessionModel = Backbone.Model.extend({
 
-    increment: function () {
-        this.set('repetitions', this.get('repetitions') + 1);
-    },
+        defaults: {
+            repetitions: 0
+        },
 
-    reset: function () {
-        this.set('repetitions', 0);
-    }
+        increment: function () {
+            this.set('repetitions', this.get('repetitions') + 1);
+        },
 
-});
+        reset: function () {
+            this.set('repetitions', 0);
+        }
+
+    });
+
+})();
